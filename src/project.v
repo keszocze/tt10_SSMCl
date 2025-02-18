@@ -515,7 +515,7 @@ module tt_um_keszocze_streaming_mult
 
   assign uio_out = result[15:8];
 
-  assign uio_en = result[7:0];
+  assign uio_oe = result[7:0];
 
 
 endmodule
