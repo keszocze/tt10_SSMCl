@@ -5,6 +5,13 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles
 
+def myBin(val, minLen=3):
+  valS = bin(val)[2:]
+
+  while len(valS) < minLen:
+    valS = "0" + valS
+
+  return valS
 
 @cocotb.test()
 async def test_project(dut):
@@ -25,20 +32,27 @@ async def test_project(dut):
 
     dut._log.info("Test project behavior")
 
-    # Set the input values you want to test
-    # 170 = (10101010) = (start,_,5,2)
-    dut.ui_in.value = 170
-    
-    await ClockCycles(dut.clk,3)
-    dut.ui_in.value = 0
+    await ClockCycles(dut.clk,1)
 
-    # Wait for one clock cycle to see the output values
-    await ClockCycles(dut.clk, 25)
+    assert dut.uo_out.value == 0
 
-    # The following assersion is just an example of how to check the output values.
-    # Change it to match the actual expected output of your module:
-    # 138 = (10001010) = (valid,_,10) = (valid,_,5*2)
-    assert dut.uo_out.value == 138
+    for x in range(0,8):
+        for y in range(0,8):
+            print(f"Testing {x} * {y}")
 
-    # Keep testing the module by changing the input values, waiting for
-    # one or more clock cycles, and asserting the expected output values.
+            startMulInputS = "10" + myBin(x) + myBin(y)
+            startMulInput = int(startMulInputS,2)
+
+            endMulS = "10" + myBin(x*y,6)
+            endMul = int(endMulS, 2)
+
+            dut.ui_in.value = startMulInput
+
+            for i in range(0,15):
+                await ClockCycles(dut.clk,1)
+
+                dut.ui_in.value = 0
+                assert dut.uo_out.value == 0
+                
+            await ClockCycles(dut.clk,1)
+            assert dut.uo_out.value == endMul
