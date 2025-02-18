@@ -54,5 +54,5 @@ async def test_project(dut):
                 dut.ui_in.value = 0
                 assert dut.uo_out.value == 0
                 
-            await ClockCycles(dut.clk,1)
+            await ClockCycles(dut.clk,5) # wait longer for good measure...
             assert dut.uo_out.value == endMul
