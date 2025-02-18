@@ -92,7 +92,7 @@ module tt_um_keszocze_streaming_mult
   wire [5:0] b1_1;
   wire [0:0] a1_2;
   wire [5:0] b1_2;
-  wire [0:0] c$app_arg_12;
+  wire [0:0] c$result_app_arg;
   wire  a3;
   wire [5:0] a5;
   wire [7:0] result_11;
@@ -485,9 +485,12 @@ module tt_um_keszocze_streaming_mult
 
   assign b1_2 = ds_1[5:0];
 
-  assign c$app_arg_12 = result_10[6:6] ? 1'b1 : 1'b0;
+  assign c$result_app_arg = result_10[6:6] ? 1'b1 : 1'b0;
 
-  assign a3 = (c$app_arg_12);
+  assign result = {result_11,   result_11,
+                   8'b00000000};
+
+  assign a3 = (c$result_app_arg);
 
   assign a5 = result_10[5:0];
 
@@ -513,9 +516,6 @@ module tt_um_keszocze_streaming_mult
   assign a1_3 = c$ds2_case_alt[5:3];
 
   assign b1_3 = c$ds2_case_alt[2:0];
-
-  assign result = {result_11,   8'b00000010,
-                   8'b00000100};
 
   assign uo_out = result[23:16];
 
