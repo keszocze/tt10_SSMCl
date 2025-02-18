@@ -12,10 +12,10 @@ module tt_um_keszocze_streaming_mult
     , output wire [7:0] uio_oe
     , input wire  ena // enable
     , input wire  clk // clock
-    , input wire  rst_n // reset     
+    , input wire  rst_n // reset
     );
   wire [0:0] c$ds_app_arg;
-  wire [3:0] \input ;
+  wire [3:0] r_input;
   wire [6:0] c$case_alt;
   wire [6:0] c$case_alt_0;
   wire [6:0] c$case_alt_1;
@@ -26,7 +26,7 @@ module tt_um_keszocze_streaming_mult
   wire [3:0] ds;
   wire [0:0] a1;
   wire [0:0] c$ds_app_arg_0;
-  wire [3:0] \input_0 ;
+  wire [3:0] r_input_0;
   wire [6:0] c$case_alt_2;
   wire [6:0] c$case_alt_3;
   wire [6:0] c$case_alt_4;
@@ -127,7 +127,7 @@ module tt_um_keszocze_streaming_mult
 
   assign c$ds_app_arg = result_12[7:7] ? 1'b1 : 1'b0;
 
-  assign \input  = {a1 == 1'b1,   ds[2:0]};
+  assign r_input = {a1 == 1'b1,   ds[2:0]};
 
   assign c$case_alt = s[4:4] ? c$case_alt_0 : c$case_alt_1;
 
@@ -144,13 +144,13 @@ module tt_um_keszocze_streaming_mult
                                                                                                s[1:0] >> (64'sd1)},
                                                                                               {1'b1,    c$bv_1[0] }};
 
-  assign c$case_alt_1 = \input [3:3] ? {{1'b1,
+  assign c$case_alt_1 = r_input[3:3] ? {{1'b1,
                                          2'b10,   ds5[2:1]},   {1'b1,   b1}} : {s,
                                                                                 {1'b0,   1'b0}};
 
   assign b1 = ds5[0:0];
 
-  assign ds5 = (\input [2:0]);
+  assign ds5 = (r_input[2:0]);
 
   assign result_0 = c$case_alt[1:0];
 
@@ -170,7 +170,7 @@ module tt_um_keszocze_streaming_mult
 
   assign c$ds_app_arg_0 = result_12[7:7] ? 1'b1 : 1'b0;
 
-  assign \input_0  = {a1_0 == 1'b1,   ds_0[2:0]};
+  assign r_input_0 = {a1_0 == 1'b1,   ds_0[2:0]};
 
   assign c$case_alt_2 = s_0[4:4] ? c$case_alt_3 : c$case_alt_4;
 
@@ -187,13 +187,13 @@ module tt_um_keszocze_streaming_mult
                                                                                                  s_0[1:0] >> (64'sd1)},
                                                                                                 {1'b1,    c$bv_4[0] }};
 
-  assign c$case_alt_4 = \input_0 [3:3] ? {{1'b1,
+  assign c$case_alt_4 = r_input_0[3:3] ? {{1'b1,
                                            2'b10,   ds5_0[2:1]},   {1'b1,
                                                                     b1_0}} : {s_0,   {1'b0,   1'b0}};
 
   assign b1_0 = ds5_0[0:0];
 
-  assign ds5_0 = (\input_0 [2:0]);
+  assign ds5_0 = (r_input_0[2:0]);
 
   assign result_1 = c$case_alt_2[1:0];
 
@@ -514,8 +514,8 @@ module tt_um_keszocze_streaming_mult
 
   assign b1_3 = c$ds2_case_alt[2:0];
 
-  assign result = {result_11,   8'b00000000,
-                   8'b00000000};
+  assign result = {result_11,   8'b00000010,
+                   8'b00000100};
 
   assign uo_out = result[23:16];
 
