@@ -7,12 +7,14 @@ module tt_um_keszocze_streaming_mult
     ( // Inputs
       input wire [7:0] ui_in
     , output wire [7:0] uo_out
-    , input wire [7:0] uio_in
     , output wire [7:0] uio_out
     , output wire [7:0] uio_oe
+    , input wire [7:0] uio_in
     , input wire  ena // enable
     , input wire  clk // clock
     , input wire  rst_n // reset
+
+      // Outputs
     );
   wire [0:0] c$ds_app_arg;
   wire [3:0] r_input;
@@ -155,8 +157,8 @@ module tt_um_keszocze_streaming_mult
   assign result_0 = c$case_alt[1:0];
 
   // register begin
-  always @(posedge clk or  posedge  rst_n) begin : s_register
-    if ( rst_n) begin
+  always @(posedge clk or  negedge  rst_n) begin : s_register
+    if ( ! rst_n) begin
       s <= {1'b0,   2'b00,   2'b00};
     end else if (ena) begin
       s <= c$case_alt[6:2];
@@ -198,8 +200,8 @@ module tt_um_keszocze_streaming_mult
   assign result_1 = c$case_alt_2[1:0];
 
   // register begin
-  always @(posedge clk or  posedge  rst_n) begin : s_0_register
-    if ( rst_n) begin
+  always @(posedge clk or  negedge  rst_n) begin : s_0_register
+    if ( ! rst_n) begin
       s_0 <= {1'b0,   2'b00,   2'b00};
     end else if (ena) begin
       s_0 <= c$case_alt_2[6:2];
@@ -212,8 +214,8 @@ module tt_um_keszocze_streaming_mult
   assign a1_0 = ds_0[3:3];
 
   // register begin
-  always @(posedge clk or  posedge  rst_n) begin : c$ds_app_arg_1_register
-    if ( rst_n) begin
+  always @(posedge clk or  negedge  rst_n) begin : c$ds_app_arg_1_register
+    if ( ! rst_n) begin
       c$ds_app_arg_1 <= {2'd0,   3'b000,   3'b000,   {1'b0,   1'b0,   1'b0,   1'b0,   1'b0,   1'b0},
    6'b000000,   3'b000,   1'b0};
     end else if (ena) begin
@@ -425,8 +427,8 @@ module tt_um_keszocze_streaming_mult
   // replaceBit end
 
   // register begin
-  always @(posedge clk or  posedge  rst_n) begin : c$ds_app_arg_2_register
-    if ( rst_n) begin
+  always @(posedge clk or  negedge  rst_n) begin : c$ds_app_arg_2_register
+    if ( ! rst_n) begin
       c$ds_app_arg_2 <= {1'b0,   1'b0,   5'b00000,   6'b000000};
     end else if (ena) begin
       c$ds_app_arg_2 <= result_7[19:7];
