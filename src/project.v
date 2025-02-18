@@ -3,7 +3,7 @@
 */
 `default_nettype none
 
-module tt_keszocze_streaming_mult
+module tt_um_keszocze_streaming_mult
     ( // Inputs
       input wire [7:0] ui_in
     , output wire [7:0] uo_out
