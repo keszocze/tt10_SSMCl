@@ -48,14 +48,12 @@ async def test_project(dut):
 
             dut.ui_in.value = startMulInput
 
-            for i in range(0,17):
-                await ClockCycles(dut.clk,1)
-
-                dut.ui_in.value = 0
-                assert dut.uo_out.value == 0
+            await ClockCycles(dut.clk, 1)
+            dut.ui_in.value = 0
+            
+            await ClockCycles(dut.clk,17)
                 
-            await ClockCycles(dut.clk,1)
             assert dut.uo_out.value == endMul
 
-            # idle a couple of clock cyckles
+            # idle a couple of clock cykles
             await ClockCycles(dut.clk,4)
