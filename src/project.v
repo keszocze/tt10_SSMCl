@@ -9,7 +9,7 @@ module tt_um_keszocze_streaming_mult
     , output wire [7:0] uo_out
     , input wire [7:0] uio_in
     , output wire [7:0] uio_out
-    , output wire [7:0] uio_en
+    , output wire [7:0] uio_oe
     , input wire  ena // enable
     , input wire  clk // clock
     , input wire  rst_n // reset

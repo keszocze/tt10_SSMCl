@@ -33,7 +33,7 @@ pinout:
 
   # Outputs
   uo[0]: "product[0]"
-  ui[1]: "product[1]"
+  uo[1]: "product[1]"
   uo[1]: "product[2]"
   uo[2]: "product[3]"
   uo[3]: "product[4]"
