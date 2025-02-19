@@ -65,8 +65,8 @@ async def test_project(dut):
             pS = myBin(x*y,16)
             dut._log.info(f"Testing {x}({xS}) * {y}({yS}) = {x*y}({pS})(8 bit, Streaming)")
             for i in range (0,8):
-                dut._log.info(f"Setting to {int("000001" + xS[7-i] + yS[7-i],2)}")
-                dut.uio_in.value = int("000001" + xS[7-i] + yS[7-i],2)
+                dut._log.info(f"Setting to {int("1" + xS[7-i] + yS[7-i],2)}")
+                dut.uio_in.value = int("1" + xS[7-i] + yS[7-i],2)
                 await ClockCycles(dut.clk,1)
             
             dut.uio_in.value = 0

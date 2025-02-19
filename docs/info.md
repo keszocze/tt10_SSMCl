@@ -9,7 +9,9 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Some stuff so that the action does not complain
+This design
+
+![wave trace for the 3-bit multiplier](int3.png)
 
 ## How to test
 
@@ -17,4 +19,4 @@ Some stuff so that the action does not complain
 
 ## External hardware
 
-Some stuff so that the action does not complain
+The 3-bit multiplier can be controlled via the web interface. For the 8-bit streaming mulitplier, connect to the pins as indicated by the bidirectional column in the table in the pinout section below.
