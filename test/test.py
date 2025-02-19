@@ -65,7 +65,7 @@ async def test_project(dut):
             yS = myBin(y,8)
 
             for i in range (0,8):
-                dut.uio_in.value = "000001" + xS[7-i] + yS[7-i]
+                dut.uio_in.value = int("000001" + xS[7-i] + yS[7-i],2)
             
             # wait to see something in the wave trace, no real test here right now
             await ClockCycles(dut.clk,75)
