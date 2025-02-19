@@ -38,7 +38,7 @@ async def test_project(dut):
 
     for x in range(0,8):
         for y in range(0,8):
-            print(f"Testing {x} * {y}")
+            dut._log.info(f"Testing {x} * {y} (3 bit, Int)")
 
             startMulInputS = "10" + myBin(x) + myBin(y)
             startMulInput = int(startMulInputS,2)
@@ -57,3 +57,15 @@ async def test_project(dut):
 
             # idle a couple of clock cykles
             await ClockCycles(dut.clk,4)
+
+    for x in range(5,21):
+        for y in range(1,6):
+            dut._log.info(f"Testing {x} * {y} (8 bit, Streaming)")
+            xS = myBin(x,8)
+            yS = myBin(y,8)
+
+            for i in range (0,8):
+                dut.uio_in.value = "000001" + xS[7-i] + yS[7-i]
+            
+            # wait to see something in the wave trace, no real test here right now
+            await ClockCycles(dut.clk,75)
