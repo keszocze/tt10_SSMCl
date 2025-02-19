@@ -13,7 +13,9 @@ This design contains two streaming multipliers. A 3-bit version expecting two in
 
 ### The general n-bit multiplier
 
-The multiplier has three 1-bit inputs: a `start` signal and one signal for each input `x` and `y`. When `start` is asserted, 
+The multiplier has three 1-bit inputs: a `start` signal and one signal for each input `x` and `y`. When `start` is asserted, the current values at `x` and `y` are taken as the least significant bit of the operands of the multiplication. The next $n-1$ cycles, the next bits of the operands should be made available at `x` and `y`. 
+
+When the operands are fully streamed, the multiplier begins its operation for $n\cdot n$ cycles. After the computation is finished, the $2\cdot n$ bits of the product are streamed back; least significant bit first.
 
 At the $(3+n)\cdot n$'th cycle, the full product is stremed back
 

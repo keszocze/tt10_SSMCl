@@ -71,7 +71,7 @@ async def test_project(dut):
                 await ClockCycles(dut.clk,1)
             
             dut.uio_in.value = 0
-            await ClockCycles(dut.clk,64)
+            await ClockCycles(dut.clk,65)
             
             
             for i in range(0,16):
