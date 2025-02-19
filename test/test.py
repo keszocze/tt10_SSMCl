@@ -60,17 +60,19 @@ async def test_project(dut):
 
     for x in range(5,21):
         for y in range(2,3):
-            dut._log.info(f"Testing {x} * {y} (8 bit, Streaming)")
             xS = myBin(x,8)
             yS = myBin(y,8)
-
+            pS = myBin(x*y,16)
+            dut._log.info(f"Testing {x}({xS}) * {y}({yS}) = {x*y}({pS})(8 bit, Streaming)")
             for i in range (0,8):
+                dut._log.info(f"Setting to {int("000001" + xS[7-i] + yS[7-i],2)}")
                 dut.uio_in.value = int("000001" + xS[7-i] + yS[7-i],2)
                 await ClockCycles(dut.clk,1)
             
+            dut.uio_in.value = 0
             await ClockCycles(dut.clk,64)
             
-            pS = myBin(x*y,16)
+            
             for i in range(0,16):
                 outS = myBin(dut.uio_out.value,8)
                 assert outS[7] == '1'
