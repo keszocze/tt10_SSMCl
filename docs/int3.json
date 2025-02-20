@@ -1,0 +1,12 @@
+{signal: [
+  {name: 'clk', wave: 'p...|.....|.'},
+  ['Input',
+    {name: 'start', wave: '0.10|...10|.'},
+   {name: 'x', wave: 'xx=x|x..=x|x', data: ['3', '2'] },
+   {name: 'y', wave: 'xx=x|x..=x|x', data: ['5', '4'] },
+  ],
+   ['Output',
+    {name: 'valid', wave: '0...|1..0.|1'},
+    {name: 'product', wave: 'x...|=..x.|=', data :['15','4']}
+   ]
+]}
