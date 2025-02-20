@@ -5,12 +5,8 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles
 
-clkCounter = 0
 
 
-def myWait(dut,n=1):
-    clkCounter += 1
-    await ClockCycles(dut.clk,n)
 
 
 def myBin(val, minLen=3):
@@ -24,6 +20,8 @@ def myBin(val, minLen=3):
 @cocotb.test()
 async def test_project(dut):
     dut._log.info("Start")
+    clkCounter = 0
+
 
     # Set the clock period to 10 us (100 KHz)
     clock = Clock(dut.clk, 10, units="us")
@@ -36,11 +34,13 @@ async def test_project(dut):
     dut.uio_in.value = 0
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 10)
+    clkCounter+=10
     dut.rst_n.value = 1
 
     dut._log.info("Test project behavior")
 
     await ClockCycles(dut.clk,1)
+    clkCounter+=1
 
     assert dut.uo_out.value == 0
 
@@ -77,9 +77,11 @@ async def test_project(dut):
                 dut._log.info(f"Setting to {streamInInt}")
                 dut.uio_in.value = streamInInt
                 await ClockCycles(dut.clk,1)
+                clkCounter +=1
             
             dut.uio_in.value = 0
             await ClockCycles(dut.clk,65)
+            clkCounter+=65
             
             
             for i in range(0,16):
@@ -88,6 +90,7 @@ async def test_project(dut):
                 #assert outS[7] == '1'
                 #assert outS[6] == pS[15-i]
                 await ClockCycles(dut.clk,1)
+                clkCounter+=1
 
             # wait to see something in the wave trace, no real test here right now
             
