@@ -1,6 +1,6 @@
-# SPDX-FileCopyrightText: © 2024 Tiny Tapeout
+# SPDX-FileCopyrightText: © 2024 Tiny Tapeout, 2025 Technical University of Denmark
 # SPDX-License-Identifier: Apache-2.0
-
+# This version was developed by Oliver Keszocze, DTU Compute, Embedded System Engineering
 import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles
