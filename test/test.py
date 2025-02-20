@@ -20,7 +20,7 @@ def myBin(val, minLen=3):
 @cocotb.test()
 async def test_project(dut):
     dut._log.info("Start")
-    clkCounter = 0
+    c#lkCounter = 0
 
 
     # Set the clock period to 10 us (100 KHz)
@@ -34,13 +34,13 @@ async def test_project(dut):
     dut.uio_in.value = 0
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 10)
-    clkCounter+=10
+    #clkCounter+=10
     dut.rst_n.value = 1
 
     dut._log.info("Test project behavior")
 
     await ClockCycles(dut.clk,1)
-    clkCounter+=1
+    #clkCounter+=1
 
     assert dut.uo_out.value == 0
 
@@ -66,31 +66,32 @@ async def test_project(dut):
             # idle a couple of clock cykles
             #await ClockCycles(dut.clk,4)
 
-    for x in range(5,6):
-        for y in range(2,3):
+    for x in range(5,23):
+        for y in range(2,15):
             xS = myBin(x,8)
             yS = myBin(y,8)
             pS = myBin(x*y,16)
             dut._log.info(f"Testing {x}({xS}) * {y}({yS}) = {x*y}({pS})(8 bit, Streaming)")
             for i in range (0,8):
                 streamInInt = int("1" + xS[7-i] + yS[7-i],2)
-                dut._log.info(f"Setting to {streamInInt}")
+                #dut._log.info(f"Setting to {streamInInt}")
                 dut.uio_in.value = streamInInt
                 await ClockCycles(dut.clk,1)
-                clkCounter +=1
+                #clkCounter +=1
             
             dut.uio_in.value = 0
             await ClockCycles(dut.clk,65)
-            clkCounter+=65
+            #clkCounter+=65
             
             
             for i in range(0,16):
                 outS = myBin(dut.uio_out.value,8)
-                dut._log.info(f"{clkCounter}: {outS}")
+                #dut._log.info(f"{clkCounter}: {outS}")
                 assert outS[0] == '1'
                 assert outS[1] == pS[15-i]
                 await ClockCycles(dut.clk,1)
-                clkCounter+=1
+                #clkCounter+=1
 
-            # wait to see something in the wave trace, no real test here right now
+            # wait just to ensure that we finished streaming
+            await ClockCycles(dut.clk,5)
             
