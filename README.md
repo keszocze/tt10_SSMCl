@@ -1,5 +1,5 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) 
-# The SSMCl proejct
+# The SSMCl project
 
 This project contains two unsigned multipliers that have been developed using [Clash](http://www.clash-lang.org) and will be submitted to [TinyTapeout](https://tinytapeout.com/) shuttle number 10:
 
