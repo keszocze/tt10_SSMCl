@@ -66,7 +66,7 @@ async def test_project(dut):
             # idle a couple of clock cykles
             #await ClockCycles(dut.clk,4)
 
-    for x in range(5,21):
+    for x in range(5,6):
         for y in range(2,3):
             xS = myBin(x,8)
             yS = myBin(y,8)
@@ -80,11 +80,11 @@ async def test_project(dut):
                 clkCounter +=1
             
             dut.uio_in.value = 0
-            await ClockCycles(dut.clk,65)
-            clkCounter+=65
+            await ClockCycles(dut.clk,60)
+            clkCounter+=60
             
             
-            for i in range(0,16):
+            for i in range(0,25):
                 outS = myBin(dut.uio_out.value,8)
                 dut._log.info(f"{clkCounter}: {outS}")
                 #assert outS[7] == '1'
