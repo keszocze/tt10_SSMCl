@@ -1,41 +1,36 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
+![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) 
+# The SSMCl proejct
 
-# Tiny Tapeout Verilog Project Template
+This project contains two unsigned multipliers that have been developed using [Clash](http://www.clash-lang.org) and will be submitted to [TinyTapeout](https://tinytapeout.com/) shuttle number 10:
 
-- [Read the documentation for project](docs/info.md)
+* A 3-bit version expecting two inputs in binary representation and a start signal and 
+* a 8-bit version that exposes a streaming interface consisting of two input bits, one for each operand, and one start signal
 
-## What is Tiny Tapeout?
+They are designed with minimality in mind at the expence of required cycles. For fun, the designs have been developed using the Clash language.
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+### The general n-bit multiplier
 
-To learn more and get started, visit https://tinytapeout.com.
+The multiplier has three 1-bit inputs: a `start` signal and one signal for each input `x` and `y`. When `start` is asserted, the current values at `x` and `y` are taken as the least significant bit of the operands of the multiplication. The next $n-1$ cycles, the next bits of the operands should be made available at `x` and `y`. 
 
-## Set up your Verilog project
+When the operands are fully streamed, the multiplier begins its operation for $n\cdot n$ cycles. After the computation is finished, the $2\cdot n$ bits of the product are streamed back; least significant bit first.
 
-1. Add your Verilog files to the `src` folder.
-2. Edit the [info.yaml](info.yaml) and update information about your project, paying special attention to the `source_files` and `top_module` properties. If you are upgrading an existing Tiny Tapeout project, check out our [online info.yaml migration tool](https://tinytapeout.github.io/tt-yaml-upgrade-tool/).
-3. Edit [docs/info.md](docs/info.md) and add a description of your project.
-4. Adapt the testbench to your design. See [test/README.md](test/README.md) for more information.
+At the $(3+n)\cdot n$'th cycle, the full product is stremed back.
 
-The GitHub action will automatically build the ASIC files using [OpenLane](https://www.zerotoasiccourse.com/terminology/openlane/).
+Asserting `start` before the multiplication has been fully carried out does not have any effect on the circuit, i.e. it is uninterruptible.
 
-## Enable GitHub actions to build the results page
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+### 3-bit Multiplier
+The 3-bit multiplier exposes a human friendly interface by accepting integer values as input, i.e. it wraps the general multiplier as described above. When `start` is asserted, the values at the `x` and `y` inputs are then being streamed into the actual multiplier, taking 3 cycles in total. The multiplier computes the product in 9 cycles and then steams back the 6-bit product in 6 cycles. The result can be seen at the output bit in cycle $18$. The result will remain valid until the next multiplication is started.The wave trace below illustrates this.
 
-## Resources
+![wave trace for the 3-bit multiplier](docs/int3.png)
 
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
-- [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
 
-## What next?
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
+### 8-bit Multiplier
+The 8-bit multiplier is simply a specialization of the general n-bit multiplier as explained above. The use it, use the bidiretional ports as described in the table in the pinout section below.
+
+The following wave trace shows the multiplication 
+$138 \cdot 86 =  (10101010)_2  \cdot (01010110)_2 = 11868 = (0010111001011100)_2$. 
+To ease the reading, additional signals (`x'`, `y'`, `product'`) have been defined that show the low/high value as a number.
+
+![wave trace for the 8-bit multiplier](docs/streaming8.png)

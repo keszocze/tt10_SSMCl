@@ -29,12 +29,14 @@ The 3-bit multiplier exposes a human friendly interface by accepting integer val
 
 ![wave trace for the 3-bit multiplier](int3.png)
 
-See the pinout section below for the concrete pins to use. 
+
 
 ### 8-bit Multiplier
 The 8-bit multiplier is simply a specialization of the general n-bit multiplier as explained above. The use it, use the bidiretional ports as described in the table in the pinout section below.
 
-The following wave trace shows the multiplication $ 138 \cdot 86 =  (10101010)_2  \cdot (01010110)_2 = 11868 = (0010111001011100)_2$. To ease the reading, additional signals (`x'`, `y'`, `product'`) have been defined that show the low/high value as a number.
+The following wave trace shows the multiplication 
+$138 \cdot 86 =  (10101010)_2  \cdot (01010110)_2 = 11868 = (0010111001011100)_2$. 
+To ease the reading, additional signals (`x'`, `y'`, `product'`) have been defined that show the low/high value as a number.
 
 ![wave trace for the 8-bit multiplier](streaming8.png)
 

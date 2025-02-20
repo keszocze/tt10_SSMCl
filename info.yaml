@@ -1,9 +1,9 @@
 # Tiny Tapeout project information
 project:
-  title:        "da title"      # Project title
-  author:       "da author"      # Your name
+  title:        "SSMCl"      # Project title
+  author:       "Oliver Keszocze"      # Your name
   discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "da description"      # One line description of what your project does
+  description:  "Slow 3/8-bit unsigned multipliers"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
@@ -43,14 +43,14 @@ pinout:
   uo[7]: "valid"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
+  uio[0]: "y"
+  uio[1]: "x"
+  uio[2]: "start"
   uio[3]: ""
   uio[4]: ""
   uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[6]: "product"
+  uio[7]: "valid"
 
 # Do not change!
 yaml_version: 6
