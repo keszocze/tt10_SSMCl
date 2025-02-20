@@ -44,8 +44,8 @@ async def test_project(dut):
 
     assert dut.uo_out.value == 0
 
-    for x in range(0,8):
-        for y in range(0,8):
+    for x in range(0,256):
+        for y in range(0,256):
             dut._log.info(f"Testing {x} * {y} (3 bit, Int)")
 
             startMulInputS = "10" + myBin(x) + myBin(y)

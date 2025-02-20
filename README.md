@@ -34,3 +34,6 @@ $138 \cdot 86 =  (10101010)_2  \cdot (01010110)_2 = 11868 = (0010111001011100)_2
 To ease the reading, additional signals (`x'`, `y'`, `product'`) have been defined that show the low/high value as a number.
 
 ![wave trace for the 8-bit multiplier](docs/streaming8.png)
+
+## Verification
+Both multipliers have been feed with all possible inputs, i.e. $64$ for the 3-bit multiplier and $65536$ for the 8-bit multiplier. The testbench is written in [cocotb](https://www.cocotb.org/) and can be found [here](test/test.py). For valid inputs, both multipliers are working correctly. What has not been tested is what happens when there are assertions of the `start` signal while a multiplication is still being carried out.
