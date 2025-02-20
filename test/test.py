@@ -87,8 +87,8 @@ async def test_project(dut):
             for i in range(0,16):
                 outS = myBin(dut.uio_out.value,8)
                 dut._log.info(f"{clkCounter}: {outS}")
-                assert outS[7] == '1'
-                assert outS[6] == pS[15-i]
+                assert outS[0] == '1'
+                assert outS[1] == pS[15-i]
                 await ClockCycles(dut.clk,1)
                 clkCounter+=1
 
