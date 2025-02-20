@@ -44,30 +44,30 @@ async def test_project(dut):
 
     assert dut.uo_out.value == 0
 
-    #for x in range(0,8):
-    #    for y in range(0,8):
-    #        dut._log.info(f"Testing {x} * {y} (3 bit, Int)")
+    for x in range(0,8):
+        for y in range(0,8):
+            dut._log.info(f"Testing {x} * {y} (3 bit, Int)")
 
-            #startMulInputS = "10" + myBin(x) + myBin(y)
-            #startMulInput = int(startMulInputS,2)
+            startMulInputS = "10" + myBin(x) + myBin(y)
+            startMulInput = int(startMulInputS,2)
 
-            #endMulS = "10" + myBin(x*y,6)
-            #endMul = int(endMulS, 2)
+            endMulS = "10" + myBin(x*y,6)
+            endMul = int(endMulS, 2)
 
-            #dut.ui_in.value = startMulInput
+            dut.ui_in.value = startMulInput
 
-            #await ClockCycles(dut.clk, 1)
-            #dut.ui_in.value = 0
+            await ClockCycles(dut.clk, 1)
+            dut.ui_in.value = 0
             
-            #await ClockCycles(dut.clk,17)
+            await ClockCycles(dut.clk,17)
                 
-            #assert dut.uo_out.value == endMul
+            assert dut.uo_out.value == endMul
 
             # idle a couple of clock cykles
-            #await ClockCycles(dut.clk,4)
+            await ClockCycles(dut.clk,4)
 
-    for x in range(5,23):
-        for y in range(2,15):
+    for x in range(0,256):
+        for y in range(0,256):
             xS = myBin(x,8)
             yS = myBin(y,8)
             pS = myBin(x*y,16)
