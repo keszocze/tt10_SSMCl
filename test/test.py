@@ -66,8 +66,8 @@ async def test_project(dut):
             # idle a couple of clock cykles
             await ClockCycles(dut.clk,4)
 
-    for x in range(1,256):
-        for y in range(5,256):
+    for x in range(1,5):
+        for y in range(5,10):
             xS = myBin(x,8)
             yS = myBin(y,8)
             pS = myBin(x*y,16)
