@@ -66,12 +66,12 @@ async def test_project(dut):
             # idle a couple of clock cykles
             await ClockCycles(dut.clk,4)
 
-    for x in range(1,5):
-        for y in range(5,10):
+    for x in range(0,256):
+        for y in range(0,256):
             xS = myBin(x,8)
             yS = myBin(y,8)
             pS = myBin(x*y,16)
-            dut._log.info(f"Testing {x}({xS}) * {y}({yS}) = {x*y}({pS})(8 bit, Streaming)")
+            dut._log.info(f"Testing {x}({xS}) * {y}({yS}) = {x*y}({pS})(16 bit, Streaming)")
             for i in range (0,8):
                 streamInInt = int("1" + xS[7-i] + yS[7-i],2)
                 #dut._log.info(f"Setting to {streamInInt}")
@@ -94,4 +94,34 @@ async def test_project(dut):
 
             # wait just to ensure that we finished streaming
             await ClockCycles(dut.clk,5)
+
+
+    for x in [0,67,564]:
+        for y in [1,2,676]:
+            xS = myBin(x,16)
+            yS = myBin(y,16)
+            pS = myBin(x*y,32)
+            dut._log.info(f"Testing {x}({xS}) * {y}({yS}) = {x*y}({pS}) (16 bit, Streaming)")
+            for i in range (0,16):
+                streamInInt = int("11" + xS[7-i] + yS[7-i],2)
+                #dut._log.info(f"Setting to {streamInInt}")
+                dut.uio_in.value = streamInInt
+                await ClockCycles(dut.clk,1)
+                #clkCounter +=1
+            
+            dut.uio_in.value = 0
+            await ClockCycles(dut.clk,257)
+            #clkCounter+=65
+            
+            
+            for i in range(0,32):
+                outS = myBin(dut.uio_out.value,16)
+                #dut._log.info(f"{clkCounter}: {outS}")
+                assert outS[0] == '1'
+                assert outS[1] == pS[15-i]
+                await ClockCycles(dut.clk,1)
+                #clkCounter+=1
+
+            # wait just to ensure that we finished streaming
+            await ClockCycles(dut.clk,5)            
             
