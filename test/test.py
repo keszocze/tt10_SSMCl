@@ -33,21 +33,26 @@ async def streaming_testcase(dut, width, mul_select_bits, debug=False):
                 yS = myBin(y,width)
                 pS = myBin(x*y,2*width)
                 dut._log.info(f"Testing {x}({xS}) * {y}({yS}) = {x*y}({pS})  ({width} bit, Streaming)")
-                dut._log.info(f"{clkCounter}: Start streaming in")
+                if debug:
+                    dut._log.info(f"{clkCounter}: Start streaming in")
                 for i in range (0,width):
                     streamInIntString = mul_select_bits + enable_bit + xS[7-i] + yS[7-i]
                     streamInInt = int(streamInIntString.lstrip('0'),2)
-                    dut._log.info(f"{clkCounter}: Setting to {streamInInt}({streamInIntString})")
+                    if debug:
+                        dut._log.info(f"{clkCounter}: Setting to {streamInInt}({streamInIntString})")
                     dut.uio_in.value = streamInInt
                     await myTick(dut,1)
 
                 
                 dut.uio_in.value = 0
-                dut._log.info(f"{clkCounter}: Waiting for the computation to finish")
-                for i in range (0, (width*width)+1):
-                    await myTick(dut, 1)
-                    outS = myBin(dut.uio_out.value,width)
-                    dut._log.info(f"{clkCounter}: {outS}")
+                if debug:
+                    dut._log.info(f"{clkCounter}: Waiting for the computation to finish")
+                    for i in range (0, (width*width)+1):
+                        await myTick(dut, 1)
+                        outS = myBin(dut.uio_out.value,width)
+                        dut._log.info(f"{clkCounter}: {outS}")
+                else:
+                    await myTick(dut, (width*width)+1)
                                 
                 
                 dut._log.info(f"{clkCounter}: Advance for debugging")
@@ -119,8 +124,8 @@ async def test_project(dut):
             # idle a couple of clock cykles
             #await ClockCycles(dut.clk,4)
 
-    #await streaming_testcase(dut,8, "0")            
-    await streaming_testcase(dut,16, "1")
+    await streaming_testcase(dut,8, "0", True)            
+    await streaming_testcase(dut,16, "1", True)
 
 
 
