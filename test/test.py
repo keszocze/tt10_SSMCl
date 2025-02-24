@@ -53,7 +53,7 @@ async def streaming_testcase(dut, width, mul_select_bits, rngX, rngY, debug=Fals
                     dut._log.info(f"{clkCounter}: Waiting for the computation to finish")
                     for i in range (0, (width*width)+1):
                         outS = myBin(dut.uio_out.value,8)
-                        dut._log.info(f"{clkCounter}: uoi_out={outS} / {myBin(dut.uio_in.value,8)}")
+                        dut._log.info(f"{clkCounter}: uoi_out={outS} / {myBin(dut.uio_in.value,8)} (COMPUTING)")
                         await myTick(dut, 1)
                 else:
                     await myTick(dut, (width*width)+1)
@@ -62,8 +62,8 @@ async def streaming_testcase(dut, width, mul_select_bits, rngX, rngY, debug=Fals
                 if debug:
                     dut._log.info(f"{clkCounter}: Starting to read out the values")
                 for i in range(0,2*width):
-                    outS = myBin(dut.uio_out.value,width)
-                    dut._log.info(f"{clkCounter}: uoi_out={outS} / {myBin(dut.uio_in.value,8)}")
+                    outS = myBin(dut.uio_out.value,8)
+                    dut._log.info(f"{clkCounter}: uoi_out={outS} / {myBin(dut.uio_in.value,8)} (READING)")
                     #assert outS[0] == '1'
                     #assert outS[1] == pS[((2*width)-1)-i]
                     await myTick(dut,1)
