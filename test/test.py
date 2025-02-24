@@ -19,6 +19,7 @@ def myBin(val, minLen=3):
 
 async def myTick(dut, n=1):
     await ClockCycles(dut.clk,n)
+    global clkCounter
     clkCounter += n
 
 async def streaming_testcase(dut, width, mul_select_bits, debug=False):
