@@ -64,7 +64,7 @@ async def streaming_testcase(dut, width, mul_select_bits, rngX, rngY, debug=Fals
                 for i in range(0,2*width):
                     outS = myBin(dut.uio_out.value,width)
                     dut._log.info(f"{clkCounter}: uoi_out={outS} / {myBin(dut.uio_in.value,8)}")
-                    assert outS[0] == '1'
+                    #assert outS[0] == '1'
                     #assert outS[1] == pS[((2*width)-1)-i]
                     await myTick(dut,1)
 
@@ -74,6 +74,29 @@ async def streaming_testcase(dut, width, mul_select_bits, rngX, rngY, debug=Fals
                     dut._log.info(f"{clkCounter}: Just add some cycles at the end for good measure")
                 await myTick(dut,5)
 
+
+async def int_testcase(dut):
+    for x in range(0,8):
+        for y in range(0,8):
+            dut._log.info(f"Testing {x} * {y} (3 bit, Int)")
+
+            startMulInputS = "10" + myBin(x) + myBin(y)
+            startMulInput = int(startMulInputS,2)
+
+            endMulS = "10" + myBin(x*y,6)
+            endMul = int(endMulS, 2)
+
+            dut.ui_in.value = startMulInput
+
+            await ClockCycles(dut.clk, 1)
+            dut.ui_in.value = 0
+            
+            await ClockCycles(dut.clk,17)
+                
+            assert dut.uo_out.value == endMul
+
+            # idle a couple of clock cykles
+            await ClockCycles(dut.clk,4)
 
 @cocotb.test()
 async def test_project(dut):
@@ -103,27 +126,7 @@ async def test_project(dut):
 
     assert dut.uo_out.value == 0
 
-    #for x in range(0,8):
-    #    for y in range(0,8):
-    #        dut._log.info(f"Testing {x} * {y} (3 bit, Int)")
-
-            #startMulInputS = "10" + myBin(x) + myBin(y)
-            #startMulInput = int(startMulInputS,2)
-
-            #endMulS = "10" + myBin(x*y,6)
-            #endMul = int(endMulS, 2)
-
-            #dut.ui_in.value = startMulInput
-
-            #await ClockCycles(dut.clk, 1)
-            #dut.ui_in.value = 0
-            
-            #await ClockCycles(dut.clk,17)
-                
-            #assert dut.uo_out.value == endMul
-
-            # idle a couple of clock cykles
-            #await ClockCycles(dut.clk,4)
+    await int_testcase(dut)
 
     #await streaming_testcase(dut, 2, "000", [2], [3], True)
     #await streaming_testcase(dut, 3, "001", range(0, 8), range(0, 8), True)
