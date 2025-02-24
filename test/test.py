@@ -44,7 +44,11 @@ async def streaming_testcase(dut, width, mul_select_bits, debug=False):
                     await myTick(dut,1)
 
                 
-                dut.uio_in.value = 0
+                #if mul_select_bits == "0":
+                #    dut.uio_in.value = 0
+                #else:
+                dut.uio_in.value = int(mul_select_bits + "000",2)
+                
                 if debug:
                     dut._log.info(f"{clkCounter}: Waiting for the computation to finish")
                     for i in range (0, (width*width)+1):
