@@ -58,12 +58,6 @@ async def streaming_testcase(dut, width, mul_select_bits, debug=False):
                 else:
                     await myTick(dut, (width*width)+1)
                                 
-                
-                dut._log.info(f"{clkCounter}: Advance for debugging")
-                for i in range(0,3):
-                    await myTick(dut, 1)
-                    outS = myBin(dut.uio_out.value,width)
-                    dut._log.info(f"{clkCounter}: {outS}")
 
                 dut._log.info(f"{clkCounter}: Starting to read out the values")
                 for i in range(0,2*width):
@@ -128,8 +122,8 @@ async def test_project(dut):
             # idle a couple of clock cykles
             #await ClockCycles(dut.clk,4)
 
-    #await streaming_testcase(dut,8, "0", True)            
-    await streaming_testcase(dut,16, "1", True)
+    await streaming_testcase(dut,8, "0", True)            
+    await streaming_testcase(dut,4, "1", True)
 
 
 
