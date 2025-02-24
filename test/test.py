@@ -22,13 +22,13 @@ async def myTick(dut, n=1):
     global clkCounter
     clkCounter += n
 
-async def streaming_testcase(dut, width, mul_select_bits, debug=False):
+async def streaming_testcase(dut, width, mul_select_bits, rngx, rngY, debug=False):
         dut._log.info(f"Start test case for {width} bits\n")
 
         enable_bit = "1"
         # TODO compute the fill range?
-        for x in range(0,10):
-            for y in range(0,10):
+        for x in rngX:
+            for y in rngY:
                 xS = myBin(x,width)
                 yS = myBin(y,width)
                 pS = myBin(x*y,2*width)
@@ -125,8 +125,14 @@ async def test_project(dut):
             # idle a couple of clock cykles
             #await ClockCycles(dut.clk,4)
 
-    await streaming_testcase(dut,8, "0", True)            
-    await streaming_testcase(dut,4, "1", True)
+    await streaming_testcase(dut, 2, "000", range(0, 4), range(0, 4), True)
+    await streaming_testcase(dut, 3, "001", range(0, 8), range(0, 8), True)
+    await streaming_testcase(dut, 4, "010", range(0,16), range(0,16), True)
+    await streaming_testcase(dut, 5, "110", range(0,32), range(0,32), True)
+    await streaming_testcase(dut, 8, "100", range(0, 8), range(0, 8), True)            
+    await streaming_testcase(dut,10, "101", range(0, 8), range(0, 8), True)
+    await streaming_testcase(dut,12, "110", range(0, 8), range(0, 8), True)
+    await streaming_testcase(dut,16, "111", range(0, 8), range(0, 8), True)
 
 
 
