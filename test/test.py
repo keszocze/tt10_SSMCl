@@ -36,7 +36,7 @@ async def streaming_testcase(dut, width, mul_select_bits, debug=False):
                 if debug:
                     dut._log.info(f"{clkCounter}: Start streaming in")
                 for i in range (0,width):
-                    streamInIntString = mul_select_bits + enable_bit + xS[7-i] + yS[7-i]
+                    streamInIntString = mul_select_bits + enable_bit + xS[(width-1)-i] + yS[(width-1)-i]
                     streamInInt = int(streamInIntString.lstrip('0'),2)
                     if debug:
                         dut._log.info(f"{clkCounter}: Setting to {streamInInt}({streamInIntString})")
@@ -59,7 +59,8 @@ async def streaming_testcase(dut, width, mul_select_bits, debug=False):
                     await myTick(dut, (width*width)+1)
                                 
 
-                dut._log.info(f"{clkCounter}: Starting to read out the values")
+                if debug:
+                    dut._log.info(f"{clkCounter}: Starting to read out the values")
                 for i in range(0,2*width):
                     outS = myBin(dut.uio_out.value,width)
                     dut._log.info(f"{clkCounter}: {outS}")
@@ -69,6 +70,8 @@ async def streaming_testcase(dut, width, mul_select_bits, debug=False):
 
 
                 # wait just to ensure that we finished streaming
+                if debug:
+                    dut._log.info(f"{clkCounter}: Just add some cycles at the end for good measure")
                 await myTick(dut,5)
 
 
