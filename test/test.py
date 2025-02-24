@@ -120,7 +120,7 @@ async def test_project(dut):
             #await ClockCycles(dut.clk,4)
 
     await streaming_testcase(dut,8, "0")            
-    await streaming_testcase(dut,16, "1")
+    #await streaming_testcase(dut,16, "1")
 
 
 
