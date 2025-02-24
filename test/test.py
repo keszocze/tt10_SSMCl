@@ -23,7 +23,7 @@ async def myTick(dut, n=1):
     clkCounter += n
 
 async def streaming_testcase(dut, width, mul_select_bits, debug=False):
-        dut._log.info()
+        dut._log.info(f"Start test case for {width} bits\n")
 
         enable_bit = "1"
         # TODO compute the fill range?
