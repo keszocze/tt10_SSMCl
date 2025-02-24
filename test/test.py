@@ -51,12 +51,12 @@ async def streaming_testcase(dut, width, mul_select_bits, rngX, rngY, debug=Fals
                 
                 if debug:
                     dut._log.info(f"{clkCounter}: Waiting for the computation to finish")
-                    for i in range (0, (width*width)):
+                    for i in range (0, (width*width)+1):
                         outS = myBin(dut.uio_out.value,8)
                         dut._log.info(f"{clkCounter}: uoi_out={outS} / {myBin(dut.uio_in.value,8)}")
                         await myTick(dut, 1)
                 else:
-                    await myTick(dut, (width*width))
+                    await myTick(dut, (width*width)+1)
                                 
 
                 if debug:
