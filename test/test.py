@@ -37,7 +37,7 @@ async def streaming_testcase(dut, width, mul_select_bits, debug=False):
                 for i in range (0,width):
                     streamInIntString = mul_select_bits + enable_bit + xS[7-i] + yS[7-i]
                     streamInInt = int(streamInIntString.lstrip('0'),2)
-                    dut._log.info(f"{clkCounter}: Setting to {streamInInt}")
+                    dut._log.info(f"{clkCounter}: Setting to {streamInInt}({streamInIntString})")
                     dut.uio_in.value = streamInInt
                     await myTick(dut,1)
 
