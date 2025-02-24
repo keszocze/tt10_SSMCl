@@ -35,10 +35,10 @@ The design features 8 multipliers of different bit-widths that can be selected b
 | 12       | 110         |
 | 16       | 111         |
 
-Note that the value of `mulSel` needs to be stable during the full 
+Note that the value of `mulSel` needs to be stable during the full operation of the multiplier as the input/output signals are routed to/from the wrong multiplier.
 
 #### 2-bit Multiplier
-The 2-bit multiplier is simply a specialization of the general n-bit multiplier as explained above. The use it, use the bidiretional ports as described in the table in the pinout section below.
+The 2-bit multiplier is simply a specialization of the general n-bit multiplier as explained above. The select it, assert `mulSel=000` and use the other bidiretional ports as described in the table in the pinout section below.
 
 The following wave trace shows the multiplication 
 $2 \cdot 2 =  (10)_2  \cdot (11)_2 = 6 = (0110)_2$. 
@@ -48,7 +48,7 @@ To ease the reading, additional signals (`x'`, `y'`, `product'`) have been defin
 
 
 #### 8-bit Multiplier
-The 8-bit multiplier is simply a specialization of the general n-bit multiplier as explained above. The use it, use the bidiretional ports as described in the table in the pinout section below.
+The 8-bit multiplier is simply a specialization of the general n-bit multiplier as explained above. The select it, assert `mulSel=100` and use the bidiretional ports as described in the table in the pinout section below.
 
 The following abbreviated wave trace shows the multiplication 
 $138 \cdot 86 =  (10101010)_2  \cdot (01010110)_2 = 11868 = (0010111001011100)_2$. 
@@ -57,7 +57,9 @@ To ease the reading, additional signals (`x'`, `y'`, `product'`) have been defin
 ![abbreviated wave trace for the 8-bit multiplier](docs/streaming8.png)
 
 ### Convenient 3-bit Multiplier
-The 3-bit multiplier exposes a human friendly interface by accepting integer values as input, i.e. it wraps the general multiplier as described above. When `start` is asserted, the values at the `x` and `y` inputs are then being streamed into the actual multiplier, taking 3 cycles in total. The multiplier computes the product in 9 cycles and then steams back the 6-bit product in 6 cycles. The result can be seen at the output bit in cycle $18$. The result will remain valid until the next multiplication is started.The wave trace below illustrates this.
+The 3-bit multiplier exposes a human friendly interface by accepting integer values as input, i.e. it wraps the general multiplier as described above. When `start` is asserted, the values at the `x` and `y` inputs are then being streamed into the actual multiplier, taking 3 cycles in total. The multiplier computes the product in 9 cycles and then steams back the 6-bit product in 6 cycles. The result can be seen at the output bit in cycle $18$. The result will remain valid until the next multiplication is started. Then abbreviated wave trace below illustrates this.
+
+The bit-width has been chosen so that the multiplier can conveniently be used through the web interface of the TinyTapeout Development Kit.
 
 ![wave trace for the 3-bit multiplier](docs/int3.png)
 
