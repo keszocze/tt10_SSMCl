@@ -16,7 +16,7 @@ The multiplier has three 1-bit inputs: a `start` signal and one signal for each 
 
 When the operands are fully streamed, the multiplier begins its operation for $n\cdot n$ cycles. After the computation is finished, the $2\cdot n$ bits of the product are streamed back; least significant bit first.
 
-At the $(3+n)\cdot n$'th cycle, the full product is stremed back.
+At the $(3+n)\cdot n$'th cycle, the full product is entirely streamed.
 
 Asserting `start` before the multiplication has been fully carried out does not have any effect on the circuit, i.e. the mulitplier is not interruptible.
 
