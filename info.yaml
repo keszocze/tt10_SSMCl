@@ -46,9 +46,9 @@ pinout:
   uio[0]: "y"
   uio[1]: "x"
   uio[2]: "start"
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
+  uio[3]: "mulSel[0]"
+  uio[4]: "mulSel[1]"
+  uio[5]: "mulSel[2]"
   uio[6]: "product"
   uio[7]: "valid"
 

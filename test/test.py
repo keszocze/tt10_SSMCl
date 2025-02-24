@@ -22,7 +22,7 @@ async def myTick(dut, n=1):
     global clkCounter
     clkCounter += n
 
-async def streaming_testcase(dut, width, mul_select_bits, rngx, rngY, debug=False):
+async def streaming_testcase(dut, width, mul_select_bits, rngX, rngY, debug=False):
         dut._log.info(f"Start test case for {width} bits\n")
 
         enable_bit = "1"
