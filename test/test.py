@@ -36,15 +36,17 @@ async def streaming_testcase(dut, width, mul_select_bits, debug=False):
                 for i in range (0,width):
                     streamInIntString = mul_select_bits + enable_bit + xS[7-i] + yS[7-i]
                     streamInInt = int(streamInIntString.lstrip('0'),2)
-                    #dut._log.info(f"Setting to {streamInInt}")
+                    dut._log.info(f"{clkCounter}: Setting to {streamInInt}")
                     dut.uio_in.value = streamInInt
                     await myTick(dut,1)
 
                 
                 dut.uio_in.value = 0
-                await ClockCycles(dut.clk, width*width + 1)
-
-                
+                for i in range (0, (widht*width)+1):
+                    await myTick(dut, 1)
+                    outS = myBin(dut.uio_out.value,width)
+                    dut._log.info(f"{clkCounter}: {outS}")
+                                
                 
                 for i in range(0,2*width):
                     outS = myBin(dut.uio_out.value,width)
