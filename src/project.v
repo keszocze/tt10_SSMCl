@@ -5,7 +5,7 @@
 `default_nettype none
 
 module tt_um_keszocze_ssmcl
-    ( // Inputs
+    ( 
       input wire [7:0] ui_in
     , output wire [7:0] uo_out
     , input wire [7:0] uio_in
@@ -98,35 +98,42 @@ module tt_um_keszocze_ssmcl
   wire [5:0] a5;
   wire [7:0] result_11;
   wire [2:0] eta;
-  reg [58:0] c$ds_app_arg_4 = {2'd0,   8'b00000000,   8'b00000000,   {1'b0,   1'b0,   1'b0,   1'b0,   1'b0,
-                                        1'b0,   1'b0,   1'b0,   1'b0,   1'b0,
-                                        1'b0,   1'b0,   1'b0,   1'b0,   1'b0,
-                                        1'b0},   16'b0000000000000000,
- 8'b00000000,   1'b0};
+  reg [114:0] c$ds_app_arg_4 = {2'd0,   16'b0000000000000000,   16'b0000000000000000,   {1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0,   1'b0,
+                                                          1'b0,   1'b0},
+ 32'b00000000000000000000000000000000,   16'b0000000000000000,   1'b0};
   wire [1:0] result_12;
-  reg [60:0] result_13;
-  wire [60:0] c$case_alt_16;
-  wire [60:0] c$case_alt_17;
-  wire [15:0] c$app_arg_19;
+  reg [116:0] result_13;
+  wire [116:0] c$case_alt_16;
+  wire [116:0] c$case_alt_17;
+  wire [31:0] c$app_arg_19;
   wire  c$app_arg_20;
-  wire [7:0] c$app_arg_21;
-  wire [7:0] c$case_alt_18;
-  wire [7:0] c$case_alt_19;
-  wire [15:0] c$app_arg_22;
-  wire [15:0] c$case_alt_20;
-  wire [15:0] c$case_alt_21;
-  wire [15:0] c$app_arg_23;
-  wire [15:0] c$case_alt_22;
-  wire [15:0] c$case_alt_23;
-  wire [15:0] c$case_alt_24;
-  wire [15:0] c$case_alt_25;
-  wire [15:0] c$app_arg_24;
+  wire [15:0] c$app_arg_21;
+  wire [15:0] c$case_alt_18;
+  wire [15:0] c$case_alt_19;
+  wire [31:0] c$app_arg_22;
+  wire [31:0] c$case_alt_20;
+  wire [31:0] c$case_alt_21;
+  wire [31:0] c$app_arg_23;
+  wire [31:0] c$case_alt_22;
+  wire [31:0] c$case_alt_23;
+  wire [31:0] c$case_alt_24;
+  wire [31:0] c$case_alt_25;
+  wire [31:0] c$app_arg_24;
   wire  cOut_0;
-  wire [15:0] c$app_arg_25;
-  wire [15:0] c$app_arg_26;
+  wire [31:0] c$app_arg_25;
+  wire [31:0] c$app_arg_26;
   wire  c$app_arg_27;
-  wire [7:0] c$app_arg_28;
-  wire [7:0] c$app_arg_29;
+  wire [15:0] c$app_arg_28;
+  wire [15:0] c$app_arg_29;
   wire [1:0] c$app_arg_30;
   wire [1:0] c$case_alt_26;
   wire  xDone_0;
@@ -134,11 +141,11 @@ module tt_um_keszocze_ssmcl
   wire  aIn_0;
   wire  bIn_0;
   wire  c$case_scrut_0;
-  wire [15:0] c$app_arg_31;
-  wire [60:0] c$case_alt_27;
+  wire [31:0] c$app_arg_31;
+  wire [116:0] c$case_alt_27;
   wire  start_0;
-  reg [7:0] result_14;
-  reg [7:0] result_15;
+  reg [15:0] result_14;
+  reg [15:0] result_15;
   wire [2:0] eta_0;
   reg [58:0] c$ds_app_arg_5 = {2'd0,   8'b00000000,   8'b00000000,   {1'b0,   1'b0,   1'b0,   1'b0,   1'b0,
                                         1'b0,   1'b0,   1'b0,   1'b0,   1'b0,
@@ -228,13 +235,13 @@ module tt_um_keszocze_ssmcl
   wire  c$din_0;
   wire  c$din_1;
   wire [1:0] result_selection_7;
-  wire [15:0] c$vec_2;
-  wire [15:0] c$vec_3;
-  wire [7:0] c$bv_7;
-  wire [7:0] c$bv_8;
-  wire [7:0] c$bv_9;
-  wire [15:0] c$vec_4;
-  wire [15:0] c$bv_10;
+  wire [31:0] c$vec_2;
+  wire [31:0] c$vec_3;
+  wire [15:0] c$bv_7;
+  wire [15:0] c$bv_8;
+  wire [15:0] c$bv_9;
+  wire [31:0] c$vec_4;
+  wire [31:0] c$bv_10;
   wire  c$din_2;
   wire  c$din_3;
   wire [1:0] result_selection_10;
@@ -616,20 +623,27 @@ module tt_um_keszocze_ssmcl
   // register begin
   always @(posedge clk or  negedge  rst_n) begin : c$ds_app_arg_4_register
     if ( ! rst_n) begin
-      c$ds_app_arg_4 <= {2'd0,   8'b00000000,   8'b00000000,   {1'b0,   1'b0,   1'b0,   1'b0,   1'b0,
-                                          1'b0,   1'b0,   1'b0,   1'b0,   1'b0,
-                                          1'b0,   1'b0,   1'b0,   1'b0,   1'b0,
-                                          1'b0},   16'b0000000000000000,
-   8'b00000000,   1'b0};
+      c$ds_app_arg_4 <= {2'd0,   16'b0000000000000000,   16'b0000000000000000,   {1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0,   1'b0,
+                                                            1'b0,   1'b0},
+   32'b00000000000000000000000000000000,   16'b0000000000000000,   1'b0};
     end else if (ena) begin
-      c$ds_app_arg_4 <= result_13[60:2];
+      c$ds_app_arg_4 <= result_13[116:2];
     end
   end
   // register end
 
   assign result_12 = result_13[1:0];
 
-  assign result_selection_7 = c$ds_app_arg_4[58:57];
+  assign result_selection_7 = c$ds_app_arg_4[114:113];
 
   always @(*) begin
     case(result_selection_7)
@@ -644,37 +658,39 @@ module tt_um_keszocze_ssmcl
   end
 
   assign c$case_alt_16 = c$case_scrut_0 ? {{2'd0,
-                                            8'b00000000,   8'b00000000,   {16 {1'b0}},
-                                            16'b0000000000000000,   8'b00000000,   1'b0},
-                                           {1'b1,   bIn_0}} : {{2'd3,
-                                                                c$ds_app_arg_4[56:49],
-                                                                c$ds_app_arg_4[48:41],   c$app_arg_19,
-                                                                c$app_arg_31,   c$ds_app_arg_4[8:1],
-                                                                c$ds_app_arg_4[0:0]},   {1'b1,   bIn_0}};
+                                            16'b0000000000000000,   16'b0000000000000000,
+                                            {32 {1'b0}},
+                                            32'b00000000000000000000000000000000,
+                                            16'b0000000000000000,   1'b0},   {1'b1,
+                                                                              bIn_0}} : {{2'd3,
+                                                                                          c$ds_app_arg_4[112:97],
+                                                                                          c$ds_app_arg_4[96:81],
+                                                                                          c$app_arg_19,   c$app_arg_31,
+                                                                                          c$ds_app_arg_4[16:1],
+                                                                                          c$ds_app_arg_4[0:0]},
+                                                                                         {1'b1,   bIn_0}};
 
   assign c$case_alt_17 = c$case_scrut_0 ? {{2'd2,
                                             result_15,   result_14,
-                                            c$ds_app_arg_4[40:25],   16'b0000000010000000,
-                                            8'b10000000,   c$ds_app_arg_4[0:0]},   {1'b0,
-                                                                                    1'b0}} : {{2'd1,   result_15,
-                                                                                               result_14,
-                                                                                               c$ds_app_arg_4[40:25],
-                                                                                               c$app_arg_31,
-                                                                                               c$ds_app_arg_4[8:1],
-                                                                                               c$ds_app_arg_4[0:0]},
-                                                                                              {1'b0,   1'b0}};
+                                            c$ds_app_arg_4[80:49],
+                                            32'b00000000000000001000000000000000,
+                                            16'b1000000000000000,   c$ds_app_arg_4[0:0]},
+                                           {1'b0,   1'b0}} : {{2'd1,   result_15,
+                                                               result_14,   c$ds_app_arg_4[80:49],
+                                                               c$app_arg_31,   c$ds_app_arg_4[16:1],
+                                                               c$ds_app_arg_4[0:0]},   {1'b0,   1'b0}};
 
-  assign c$vec_2 = c$ds_app_arg_4[40:25];
+  assign c$vec_2 = c$ds_app_arg_4[80:49];
 
   // rotateLeftS begin
-  localparam shift_amount_3 = 1 % 16;
+  localparam shift_amount_3 = 1 % 32;
 
   generate
   if (shift_amount_3 == 0) begin : no_shift_3
     assign c$app_arg_19 = c$vec_2;
   end else begin : do_shift_3
-    assign c$app_arg_19 = {c$vec_2[((16-shift_amount_3)*1)-1 : 0]
-                     ,c$vec_2[16-1 : (16-shift_amount_3)*1]
+    assign c$app_arg_19 = {c$vec_2[((32-shift_amount_3)*1)-1 : 0]
+                     ,c$vec_2[32-1 : (32-shift_amount_3)*1]
                      };
   end
   endgenerate
@@ -684,61 +700,61 @@ module tt_um_keszocze_ssmcl
 
   assign c$app_arg_21 = c$case_scrut_0 ? c$case_alt_18 : c$case_alt_19;
 
-  assign c$case_alt_18 = xDone_0 ? 8'b00000000 : c$case_alt_19;
+  assign c$case_alt_18 = xDone_0 ? 16'b0000000000000000 : c$case_alt_19;
 
   // rotateR begin
-  wire [2*8-1:0] bv_1;
-  assign bv_1 = {c$ds_app_arg_4[8:1],c$ds_app_arg_4[8:1]} >> ((64'sd1) % 8);
-  assign c$case_alt_19 = bv_1[8-1 : 0];
+  wire [2*16-1:0] bv_1;
+  assign bv_1 = {c$ds_app_arg_4[16:1],c$ds_app_arg_4[16:1]} >> ((64'sd1) % 16);
+  assign c$case_alt_19 = bv_1[16-1 : 0];
   // rotateR end
 
   assign c$app_arg_22 = c$case_scrut_0 ? c$case_alt_20 : c$case_alt_21;
 
-  assign c$case_alt_20 = xDone_0 ? 16'b1000000000000000 : c$ds_app_arg_4[24:9];
+  assign c$case_alt_20 = xDone_0 ? 32'b10000000000000000000000000000000 : c$ds_app_arg_4[48:17];
 
-  assign c$case_alt_21 = xDone_0 ? c$app_arg_31 : c$ds_app_arg_4[24:9];
+  assign c$case_alt_21 = xDone_0 ? c$app_arg_31 : c$ds_app_arg_4[48:17];
 
   assign c$app_arg_23 = xDone_0 ? c$case_alt_22 : c$case_alt_23;
 
   assign c$case_alt_22 = c$case_scrut_0 ? c$case_alt_24 : c$case_alt_25;
 
   // rotateLeftS begin
-  localparam shift_amount_4 = 1 % 16;
+  localparam shift_amount_4 = 1 % 32;
 
   generate
   if (shift_amount_4 == 0) begin : no_shift_4
     assign c$case_alt_23 = c$app_arg_26;
   end else begin : do_shift_4
-    assign c$case_alt_23 = {c$app_arg_26[((16-shift_amount_4)*1)-1 : 0]
-                     ,c$app_arg_26[16-1 : (16-shift_amount_4)*1]
+    assign c$case_alt_23 = {c$app_arg_26[((32-shift_amount_4)*1)-1 : 0]
+                     ,c$app_arg_26[32-1 : (32-shift_amount_4)*1]
                      };
   end
   endgenerate
   // rotateLeftS end
 
   // rotateLeftS begin
-  localparam shift_amount_5 = 1 % 16;
+  localparam shift_amount_5 = 1 % 32;
 
   generate
   if (shift_amount_5 == 0) begin : no_shift_5
     assign c$case_alt_24 = c$app_arg_24;
   end else begin : do_shift_5
-    assign c$case_alt_24 = {c$app_arg_24[((16-shift_amount_5)*1)-1 : 0]
-                     ,c$app_arg_24[16-1 : (16-shift_amount_5)*1]
+    assign c$case_alt_24 = {c$app_arg_24[((32-shift_amount_5)*1)-1 : 0]
+                     ,c$app_arg_24[32-1 : (32-shift_amount_5)*1]
                      };
   end
   endgenerate
   // rotateLeftS end
 
   // rotateRightS begin
-  localparam shift_amount_6 = 7 % 16;
+  localparam shift_amount_6 = 15 % 32;
 
   generate
   if (shift_amount_6 == 0) begin : no_shift_6
     assign c$case_alt_25 = c$app_arg_24;
   end else begin : do_shift_6
     assign c$case_alt_25 = {c$app_arg_24[(shift_amount_6*1)-1 : 0]
-                     ,c$app_arg_24[16-1 : shift_amount_6*1]
+                     ,c$app_arg_24[32-1 : shift_amount_6*1]
                      };
   end
   endgenerate
@@ -747,74 +763,80 @@ module tt_um_keszocze_ssmcl
   // vector replace begin
   genvar i_1;
   generate
-  for (i_1=0;i_1<16;i_1=i_1+1) begin : vector_replace_1
-    assign c$app_arg_24[(15-i_1)*1+:1] = (64'sd0) == i_1 ? cOut_0 : c$app_arg_25[(15-i_1)*1+:1];
+  for (i_1=0;i_1<32;i_1=i_1+1) begin : vector_replace_1
+    assign c$app_arg_24[(31-i_1)*1+:1] = (64'sd0) == i_1 ? cOut_0 : c$app_arg_25[(31-i_1)*1+:1];
   end
   endgenerate
   // vector replace end
 
   assign cOut_0 = (c$ds_app_arg_4[0:0] & sharedLogic_0) | (aIn_0 & bIn_0);
 
-  assign c$app_arg_25 = {c$ds_app_arg_4[39:39],
-                         {{c$ds_app_arg_4[38:38],   c$ds_app_arg_4[37:37],   c$ds_app_arg_4[36:36],
-                       c$ds_app_arg_4[35:35],   c$ds_app_arg_4[34:34],   c$ds_app_arg_4[33:33],
-                       c$ds_app_arg_4[32:32],   c$ds_app_arg_4[31:31],   c$ds_app_arg_4[30:30],
-                       c$ds_app_arg_4[29:29],   c$ds_app_arg_4[28:28],   c$ds_app_arg_4[27:27],
-                       c$ds_app_arg_4[26:26],   c$ds_app_arg_4[25:25]},c$app_arg_27}};
+  assign c$app_arg_25 = {c$ds_app_arg_4[79:79],
+                         {{c$ds_app_arg_4[78:78],   c$ds_app_arg_4[77:77],   c$ds_app_arg_4[76:76],
+                       c$ds_app_arg_4[75:75],   c$ds_app_arg_4[74:74],   c$ds_app_arg_4[73:73],
+                       c$ds_app_arg_4[72:72],   c$ds_app_arg_4[71:71],   c$ds_app_arg_4[70:70],
+                       c$ds_app_arg_4[69:69],   c$ds_app_arg_4[68:68],   c$ds_app_arg_4[67:67],
+                       c$ds_app_arg_4[66:66],   c$ds_app_arg_4[65:65],   c$ds_app_arg_4[64:64],
+                       c$ds_app_arg_4[63:63],   c$ds_app_arg_4[62:62],   c$ds_app_arg_4[61:61],
+                       c$ds_app_arg_4[60:60],   c$ds_app_arg_4[59:59],   c$ds_app_arg_4[58:58],
+                       c$ds_app_arg_4[57:57],   c$ds_app_arg_4[56:56],   c$ds_app_arg_4[55:55],
+                       c$ds_app_arg_4[54:54],   c$ds_app_arg_4[53:53],   c$ds_app_arg_4[52:52],
+                       c$ds_app_arg_4[51:51],   c$ds_app_arg_4[50:50],   c$ds_app_arg_4[49:49]},c$app_arg_27}};
 
-  assign c$vec_3 = c$ds_app_arg_4[40:25];
+  assign c$vec_3 = c$ds_app_arg_4[80:49];
 
   // vector replace begin
   genvar i_2;
   generate
-  for (i_2=0;i_2<16;i_2=i_2+1) begin : vector_replace_2
-    assign c$app_arg_26[(15-i_2)*1+:1] = (64'sd0) == i_2 ? c$app_arg_27 : c$vec_3[(15-i_2)*1+:1];
+  for (i_2=0;i_2<32;i_2=i_2+1) begin : vector_replace_2
+    assign c$app_arg_26[(31-i_2)*1+:1] = (64'sd0) == i_2 ? c$app_arg_27 : c$vec_3[(31-i_2)*1+:1];
   end
   endgenerate
   // vector replace end
 
   assign c$app_arg_27 = sharedLogic_0 ^ c$ds_app_arg_4[0:0];
 
-  assign c$app_arg_28 = xDone_0 ? (c$ds_app_arg_4[48:41] >> (64'sd1)) : c$ds_app_arg_4[48:41];
+  assign c$app_arg_28 = xDone_0 ? (c$ds_app_arg_4[96:81] >> (64'sd1)) : c$ds_app_arg_4[96:81];
 
   // rotateR begin
-  wire [2*8-1:0] bv_2;
-  assign bv_2 = {c$ds_app_arg_4[56:49],c$ds_app_arg_4[56:49]} >> ((64'sd1) % 8);
-  assign c$app_arg_29 = bv_2[8-1 : 0];
+  wire [2*16-1:0] bv_2;
+  assign bv_2 = {c$ds_app_arg_4[112:97],c$ds_app_arg_4[112:97]} >> ((64'sd1) % 16);
+  assign c$app_arg_29 = bv_2[16-1 : 0];
   // rotateR end
 
   assign c$app_arg_30 = c$case_scrut_0 ? c$case_alt_26 : 2'd2;
 
   assign c$case_alt_26 = xDone_0 ? 2'd3 : 2'd2;
 
-  assign c$bv_7 = c$ds_app_arg_4[8:1];
+  assign c$bv_7 = c$ds_app_arg_4[16:1];
 
   assign xDone_0 = (c$bv_7[(64'sd0)]) == (1'b1);
 
   assign sharedLogic_0 = aIn_0 ^ bIn_0;
 
-  assign c$bv_8 = (c$ds_app_arg_4[56:49]);
+  assign c$bv_8 = (c$ds_app_arg_4[112:97]);
 
-  assign c$bv_9 = (c$ds_app_arg_4[48:41]);
+  assign c$bv_9 = (c$ds_app_arg_4[96:81]);
 
   assign aIn_0 = ( c$bv_8[0] ) & ( c$bv_9[0] );
 
-  assign c$vec_4 = c$ds_app_arg_4[40:25];
+  assign c$vec_4 = c$ds_app_arg_4[80:49];
 
   // index lit begin
-  assign bIn_0 = c$vec_4[16-1-0*1 -: 1];
+  assign bIn_0 = c$vec_4[32-1-0*1 -: 1];
   // index lit end
 
-  assign c$bv_10 = c$ds_app_arg_4[24:9];
+  assign c$bv_10 = c$ds_app_arg_4[48:17];
 
   assign c$case_scrut_0 = (c$bv_10[(64'sd0)]) == (1'b1);
 
-  assign c$app_arg_31 = c$ds_app_arg_4[24:9] >> (64'sd1);
+  assign c$app_arg_31 = c$ds_app_arg_4[48:17] >> (64'sd1);
 
   assign c$case_alt_27 = start_0 ? {{2'd1,
                                      result_15,   result_14,
-                                     c$ds_app_arg_4[40:25],   16'b0000000001000000,
-                                     c$ds_app_arg_4[8:1],   c$ds_app_arg_4[0:0]},
+                                     c$ds_app_arg_4[80:49],
+                                     32'b00000000000000000100000000000000,
+                                     c$ds_app_arg_4[16:1],   c$ds_app_arg_4[0:0]},
                                     {1'b0,   1'b0}} : {c$ds_app_arg_4,   {1'b0,
                                                                           1'b0}};
 
@@ -824,8 +846,8 @@ module tt_um_keszocze_ssmcl
 
   // replaceBit start
   always @(*) begin
-    result_14 = (c$ds_app_arg_4[48:41] >> (64'sd1));
-    result_14[(64'sd7)] = c$din_2;
+    result_14 = (c$ds_app_arg_4[96:81] >> (64'sd1));
+    result_14[(64'sd15)] = c$din_2;
   end
   // replaceBit end
 
@@ -833,8 +855,8 @@ module tt_um_keszocze_ssmcl
 
   // replaceBit start
   always @(*) begin
-    result_15 = (c$ds_app_arg_4[56:49] >> (64'sd1));
-    result_15[(64'sd7)] = c$din_3;
+    result_15 = (c$ds_app_arg_4[112:97] >> (64'sd1));
+    result_15[(64'sd15)] = c$din_3;
   end
   // replaceBit end
 
