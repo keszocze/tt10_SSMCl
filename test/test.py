@@ -128,7 +128,9 @@ async def test_project(dut):
 
     await int_testcase(dut)
 
-    #await streaming_testcase(dut, 2, "000", [2], [3], True)
+    # TODO anscheinend habe ich einen off-by-one Fehler in der Dauer der Berechnungen?
+
+    await streaming_testcase(dut, 2, "000", [2], [3], True)
     #await streaming_testcase(dut, 3, "001", range(0, 8), range(0, 8), True)
     #await streaming_testcase(dut, 4, "010", range(0,16), range(0,16), True)
     #await streaming_testcase(dut, 5, "110", range(0,32), range(0,32), True)
