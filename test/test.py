@@ -119,8 +119,8 @@ async def test_project(dut):
             # idle a couple of clock cykles
             #await ClockCycles(dut.clk,4)
 
-    await streaming_testcase(dut,8, "1", "0")            
-    await streaming_testcase(dut,16, "1", "1")
+    await streaming_testcase(dut,8, "0")            
+    await streaming_testcase(dut,16, "1")
 
 
 
