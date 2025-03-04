@@ -40,9 +40,13 @@ async def int_testcase(dut):
             dut.ui_in.value = 0
             
             # hier dann eventuell in computing / streaming teilen
-            for i in range(0,17):
+            for i in range(0,11):
                 assert dut.uo_out.value == lastResult
                 dut._log.info(f"{clkCounter}: waiting for result (out={dut.uo_out.value})")
+                await myTick(dut,1)
+            for i in range(0,6):
+                assert dut.uo_out.value == 0
+                dut._log.info(f"{clkCounter}: streaming the result (out={dut.uo_out.value})")
                 await myTick(dut,1)
             
             dut._log.info(f"{clkCounter}: should have result (out={dut.uo_out.value})")
