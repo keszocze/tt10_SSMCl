@@ -23,6 +23,7 @@ async def myTick(dut, n=1):
     clkCounter += n
 
 async def int_testcase(dut):
+    lastResult = 0
     for x in range(0,8):
         for y in range(0,8):
             dut._log.info(f"Testing {x} * {y} (3 bit)")
@@ -38,13 +39,16 @@ async def int_testcase(dut):
             await myTick(dut,1)
             dut.ui_in.value = 0
             
+            # hier dann eventuell in computing / streaming teilen
             for i in range(0,17):
-                assert dut.uo_out.value == 0
+                assert dut.uo_out.value == lastResult
                 dut._log.info(f"{clkCounter}: waiting for result (out={dut.uo_out.value})")
                 await myTick(dut,1)
             
             dut._log.info(f"{clkCounter}: should have result (out={dut.uo_out.value})")
             assert dut.uo_out.value == endMul
+
+            lastResult = endMul
 
             # idle a couple of clock cykles
             await myTick(dut,4)
