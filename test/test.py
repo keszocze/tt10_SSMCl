@@ -38,12 +38,12 @@ async def int_testcase(dut):
             await myTick(dut,1)
             dut.ui_in.value = 0
             
-            for i in range(0,18):
+            for i in range(0,17):
                 assert dut.uo_out.value == 0
-                dut._log.info(f"{clkCounter}: {dut.uo_out.value}")
+                dut._log.info(f"{clkCounter}: waiting for result (out={dut.uo_out.value})")
                 await myTick(dut,1)
             
-            dut._log.info(f"{clkCounter}: {dut.uo_out.value}")
+            dut._log.info(f"{clkCounter}: should have result (out={dut.uo_out.value})")
             assert dut.uo_out.value == endMul
 
             # idle a couple of clock cykles
