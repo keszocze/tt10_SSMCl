@@ -22,12 +22,12 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "x[0]"
-  ui[1]: "x[1]"
-  ui[2]: "x[2]"
-  ui[3]: "y[0]"
-  ui[4]: "y[1]"
-  ui[5]: "y[2]"
+  ui[0]: "y[0]"
+  ui[1]: "y[1]"
+  ui[2]: "y[2]"
+  ui[3]: "x[0]"
+  ui[4]: "x[1]"
+  ui[5]: "x[2]"
   ui[6]: ""
   ui[7]: "start"
 

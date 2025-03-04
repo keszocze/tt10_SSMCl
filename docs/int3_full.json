@@ -1,0 +1,20 @@
+{signal: [
+    {name: 'clk', wave: 'p.........................|.|..'},
+    ['Input',
+     {name: 'start', wave: '010.....................10|.|..'},
+     {name: 'x', wave: 'x=xx....................=x|x|..', data: ['3', '2'] },
+     {name: 'y', wave: 'x=xx....................=x|x|..', data: ['5', '4'] },
+    ],
+     {node: '.S.E........C.....O........R.K', phase:.15},
+     ['Output',
+      {name: 'valid', wave: '0.................1.......|0|1.'},
+      {name: 'product', wave: 'x.................=.......|x|=.', data :['15','8']}
+     ]
+  ],
+  edge: [
+  		'S+E stream', 'E+C compute product', 'C+O stream', 'O+R hold result'
+	],
+  foot: {
+  tock: 0,
+  }
+}
