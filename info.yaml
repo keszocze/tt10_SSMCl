@@ -34,11 +34,10 @@ pinout:
   # Outputs
   uo[0]: "product[0]"
   uo[1]: "product[1]"
-  uo[1]: "product[2]"
-  uo[2]: "product[3]"
-  uo[3]: "product[4]"
-  uo[4]: "product[5]"
-  uo[5]: "product[6]"
+  uo[2]: "product[2]"
+  uo[3]: "product[3]"
+  uo[4]: "product[4]"
+  uo[5]: "product[5]"
   uo[6]: ""
   uo[7]: "valid"
 
