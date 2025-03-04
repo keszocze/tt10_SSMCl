@@ -35,18 +35,19 @@ async def int_testcase(dut):
 
             dut.ui_in.value = startMulInput
 
-            await ClockCycles(dut.clk, 1)
+            myTick(dut,1)
             dut.ui_in.value = 0
             
             for i in range(0,18):
                 assert dut.uo_out.value == 0
-                await ClockCycles(dut.clk,1)
+                dut._log.info(f"{clkCounter}: {dut.uo_out.value}")
+                myTick(dut,1)
             
-                
+            dut._log.info(f"{clkCounter}: {dut.uo_out.value}")
             assert dut.uo_out.value == endMul
 
             # idle a couple of clock cykles
-            await ClockCycles(dut.clk,4)
+            myTick(dut,4)
 
 @cocotb.test()
 async def test_project(dut):
